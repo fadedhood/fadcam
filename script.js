@@ -6,6 +6,19 @@ document.addEventListener('DOMContentLoaded', () => {
     const nextBtn = document.querySelector('.slider-arrow.next');
     const faqItems = document.querySelectorAll('.faq-item');
 
+
+    window.addEventListener('scroll', () => {
+        const header = document.querySelector('header');
+        if (window.scrollY > 0) {
+            header.querySelector('.topbar').classList.add('shrink');
+        } else {
+            header.querySelector('.topbar').classList.remove('shrink');
+        }
+    });
+    
+
+    
+    
     // Header scroll effect
     window.addEventListener('scroll', () => {
         if (window.scrollY > 100) {

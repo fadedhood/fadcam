@@ -17,6 +17,7 @@ body {
     background-color: var(--bg-color);
     color: var(--text-color);
     line-height: 1.6;
+    scroll-behavior: smooth; /* Optional: Smooth scroll behavior */
 }
 
 .container {
@@ -28,20 +29,43 @@ body {
 /* Header styles */
 header {
     position: fixed;
-    width: 100%;
+    width: 90%; /* Keep this for the overall width */
+    left: 50%;
+    transform: translateX(-50%);
     z-index: 1000;
-    transition: all var(--transition-speed) ease;
+    transition: transform var(--transition-speed) ease, padding var(--transition-speed) ease; /* Smooth transitions */
+    border-radius: 20px; /* Rounded corners */
+    overflow: hidden; /* To maintain rounded edges during transition */
 }
 
 .topbar {
     background-color: rgba(18, 18, 18, 0.8);
     backdrop-filter: blur(10px);
-    border-radius: 0 0 20px 20px;
     padding: 15px 30px;
     display: flex;
     justify-content: space-between;
     align-items: center;
+    border-radius: 20px; /* Rounded corners */
+    transition: all var(--transition-speed) ease; /* Smooth transition */
+    margin-top: 10px; /* Add this line */
 }
+
+.topbar.shrink {
+    padding: 10px 20px; /* Adjust padding on scroll */
+    transform: scale(0.9) translateY(-5px); /* Scale down slightly and move up */
+    border-radius: 20px; /* Keep rounded corners */
+}
+
+
+
+/* Add a class for when scrolling to center */
+.scrolled {
+    left: 50%; /* Center it on scroll */
+    right: 50%; /* Center it on scroll */
+    transform: translateX(-50%); /* Align it properly */
+}
+
+
 
 .logo {
     width: 50px;
