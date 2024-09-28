@@ -5,26 +5,32 @@ document.addEventListener('DOMContentLoaded', () => {
     const prevBtn = document.querySelector('.slider-arrow.prev');
     const nextBtn = document.querySelector('.slider-arrow.next');
     const faqItems = document.querySelectorAll('.faq-item');
+    const hamburgerMenu = document.querySelector('.hamburger-menu');
+    const mobileMenu = document.querySelector('.mobile-menu');
+    const mobileMenuLinks = document.querySelectorAll('.mobile-menu a');
 
+    // Hamburger menu functionality
+    hamburgerMenu.addEventListener('click', () => {
+        hamburgerMenu.classList.toggle('active');
+        mobileMenu.classList.toggle('active');
+        document.body.classList.toggle('menu-open');
+    });
 
+    // Close mobile menu when a link is clicked
+    mobileMenuLinks.forEach(link => {
+        link.addEventListener('click', () => {
+            hamburgerMenu.classList.remove('active');
+            mobileMenu.classList.remove('active');
+            document.body.classList.remove('menu-open');
+        });
+    });
+
+    // Header scroll effect
     window.addEventListener('scroll', () => {
-        const header = document.querySelector('header');
         if (window.scrollY > 0) {
             header.querySelector('.topbar').classList.add('shrink');
         } else {
             header.querySelector('.topbar').classList.remove('shrink');
-        }
-    });
-    
-
-    
-    
-    // Header scroll effect
-    window.addEventListener('scroll', () => {
-        if (window.scrollY > 100) {
-            header.classList.add('scrolled');
-        } else {
-            header.classList.remove('scrolled');
         }
     });
 
