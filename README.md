@@ -1,1 +1,1 @@
-# fadcam.fadedhood.com
+# fadedhood.github.io/fadcam
