@@ -8,6 +8,41 @@ document.addEventListener('DOMContentLoaded', () => {
     const hamburgerMenu = document.querySelector('.hamburger-menu');
     const mobileMenu = document.querySelector('.mobile-menu');
     const mobileMenuLinks = document.querySelectorAll('.mobile-menu a');
+    const screenshotModal = document.getElementById('screenshotModal');
+    const modalImage = document.getElementById('modalImage');
+    const closeModal = document.querySelector('.close-modal');
+    const screenshotImages = document.querySelectorAll('.screenshots img');
+
+    // Modal for screenshots
+    screenshotImages.forEach(img => {
+        img.addEventListener('click', () => {
+            modalImage.src = img.src;
+            screenshotModal.classList.add('active');
+            document.body.style.overflow = 'hidden'; // Prevent scrolling when modal is open
+        });
+    });
+
+    // Close modal with close button
+    closeModal.addEventListener('click', () => {
+        screenshotModal.classList.remove('active');
+        document.body.style.overflow = 'auto'; // Re-enable scrolling
+    });
+
+    // Close modal when clicking outside of the image
+    screenshotModal.addEventListener('click', (e) => {
+        if (e.target === screenshotModal) {
+            screenshotModal.classList.remove('active');
+            document.body.style.overflow = 'auto'; // Re-enable scrolling
+        }
+    });
+
+    // Close modal with escape key
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && screenshotModal.classList.contains('active')) {
+            screenshotModal.classList.remove('active');
+            document.body.style.overflow = 'auto'; // Re-enable scrolling
+        }
+    });
 
     // Hamburger menu functionality
     hamburgerMenu.addEventListener('click', () => {
@@ -66,29 +101,27 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     // Screenshots slider functionality
-    let slideIndex = 0;
-    const slideWidth = 220; // Width of each slide including gap
-    const maxSlides = slider.children.length - Math.floor(slider.clientWidth / slideWidth);
+    const scrollAmount = 300; // Amount to scroll by
 
-    function moveSlider(direction) {
-        if (direction === 'next' && slideIndex < maxSlides) {
-            slideIndex++;
-        } else if (direction === 'prev' && slideIndex > 0) {
-            slideIndex--;
-        }
-        slider.style.transform = `translateX(-${slideIndex * slideWidth}px)`;
-        updateArrowVisibility();
-    }
+    prevBtn.addEventListener('click', () => {
+        slider.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
+    });
 
-    function updateArrowVisibility() {
-        prevBtn.style.display = slideIndex > 0 ? 'block' : 'none';
-        nextBtn.style.display = slideIndex < maxSlides ? 'block' : 'none';
-    }
+    nextBtn.addEventListener('click', () => {
+        slider.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+    });
 
-    prevBtn.addEventListener('click', () => moveSlider('prev'));
-    nextBtn.addEventListener('click', () => moveSlider('next'));
+    // Show/hide arrows based on scroll position
+    slider.addEventListener('scroll', () => {
+        prevBtn.style.display = slider.scrollLeft > 0 ? 'flex' : 'none';
+        nextBtn.style.display = 
+            (slider.scrollWidth - slider.clientWidth - slider.scrollLeft > 1) ? 'flex' : 'none';
+    });
 
-    updateArrowVisibility();
+    // Initialize arrow visibility
+    prevBtn.style.display = 'none';
+    nextBtn.style.display = 
+        (slider.scrollWidth > slider.clientWidth) ? 'flex' : 'none';
 
     // FAQ accordion functionality
     faqItems.forEach(item => {

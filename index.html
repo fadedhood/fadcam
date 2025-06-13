@@ -12,7 +12,7 @@
         <header>
             <nav class="container">
                 <div class="topbar">
-                    <a href="https://fadcam.fadedhood.com" class="logo"><img src="img/icon.png" alt="FadCam Logo" class="logo"></a>
+                    <a href="https://fadedhood.github.io/fadcam" class="logo"><img src="img/icon.png" alt="FadCam Logo" class="logo"></a>
                     <div class="nav-links desktop-nav">
                         <a href="#features">Features</a>
                         <a href="#screenshots">Screenshots</a>
@@ -81,40 +81,176 @@
             <div class="screenshots-slider">
                 <button class="slider-arrow prev"><i class="fas fa-chevron-left"></i></button>
                 <div class="screenshots">
-                    <img src="img/1.png" alt="FadCam Screenshot 1">
-                    <img src="img/2.png" alt="FadCam Screenshot 2">
-                    <img src="img/3.png" alt="FadCam Screenshot 3">
-                    <img src="img/4.png" alt="FadCam Screenshot 4">
-                    <img src="img/5.png" alt="FadCam Full Width Screenshot">
+                    <img src="img/1.jpg" alt="FadCam Screenshot 1">
+                    <img src="img/2.jpg" alt="FadCam Screenshot 2">
+                    <img src="img/3.jpg" alt="FadCam Screenshot 3">
+                    <img src="img/4.jpg" alt="FadCam Screenshot 4">
+                    <img src="img/5.jpg" alt="FadCam Screenshot 5">
+                    <img src="img/6.jpg" alt="FadCam Screenshot 6">
+                    <img src="img/7.jpg" alt="FadCam Screenshot 7">
+                    <img src="img/8.jpg" alt="FadCam Screenshot 8">
+                    <img src="img/9.jpg" alt="FadCam Screenshot 9">
+                    <img src="img/10.jpg" alt="FadCam Screenshot 10">
                 </div>
                 <button class="slider-arrow next"><i class="fas fa-chevron-right"></i></button>
             </div>
         </section>
 
+        <div class="modal" id="screenshotModal">
+            <span class="close-modal">&times;</span>
+            <img class="modal-content" id="modalImage">
+        </div>
+
         <section id="featured" class="container">
             <h2 class="section-title">Featured On</h2>
-            <div class="featured-logos">
-                <!-- Add logos of websites or platforms where FadCam is featured -->
-                <img src="img/featured-logo-1.png" alt="Featured on Platform 1">
-                <img src="img/featured-logo-2.png" alt="Featured on Platform 2">
-                <img src="img/featured-logo-3.png" alt="Featured on Platform 3">
+            <p class="featured-subtitle">Recognized on 55+ platforms worldwide</p>
+            
+            <div class="featured-videos">
+                <div class="video-container">
+                    <iframe width="560" height="315" src="https://www.youtube.com/embed/3pOoU5JjfnE?si=lWV6xwdf_dUUUuXB&amp;start=522" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                </div>
+                <div class="video-container">
+                    <iframe width="560" height="315" src="https://www.youtube.com/embed/E4Row0mFbfk?si=sBrZ44Pc_fabW4S4&amp;start=519" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                </div>
+            </div>
+            
+            <div class="featured-partners">
+                <a href="https://www.computer-wd.com/2024/12/best-android-apps-2024.html" class="partner-link" target="_blank">
+                    <div class="partner-card">
+                        <i class="fas fa-newspaper"></i>
+                        <span>Computer-WD</span>
+                    </div>
+                </a>
+                <a href="https://fadcam.en.uptodown.com/android" class="partner-link" target="_blank">
+                    <div class="partner-card">
+                        <i class="fas fa-download"></i>
+                        <span>Uptodown</span>
+                    </div>
+                </a>
+                <a href="https://en.xiaomitoday.it/fadcam-con-questa-app-diventi-un-agente-segreto.html" class="partner-link" target="_blank">
+                    <div class="partner-card">
+                        <i class="fas fa-mobile-alt"></i>
+                        <span>XiaomiToday</span>
+                    </div>
+                </a>
+                <a href="https://www.openapk.net/fadcam/com.fadcam/" class="partner-link" target="_blank">
+                    <div class="partner-card">
+                        <i class="fas fa-puzzle-piece"></i>
+                        <span>OpenAPK</span>
+                    </div>
+                </a>
             </div>
         </section>
 
         <section id="reviews" class="container">
             <h2 class="section-title">User Reviews</h2>
-            <div class="reviews">
-                <div class="review">
-                    <p>"FadCam has been a game-changer for my personal security needs. Highly recommended!"</p>
-                    <span class="review-author">- John D.</span>
+            <div class="reviews-container">
+                <div class="review-card">
+                    <div class="review-content">
+                        <p>"Very great, I really liked that your app is completely free and just works on the latest android version. I hope you continue making it better!"</p>
+                    </div>
+                    <div class="review-author">
+                        <div class="author-avatar">
+                            <i class="fas fa-user"></i>
+                        </div>
+                        <span>Lazyhorse</span>
+                    </div>
                 </div>
-                <div class="review">
-                    <p>"The background recording feature is seamless and exactly what I needed for my research work."</p>
-                    <span class="review-author">- Sarah M.</span>
+                
+                <div class="review-card">
+                    <div class="review-content">
+                        <p>"Exactly what I needed"</p>
+                    </div>
+                    <div class="review-author">
+                        <div class="author-avatar">
+                            <i class="fas fa-user"></i>
+                        </div>
+                        <span>Abid</span>
+                    </div>
                 </div>
-                <div class="review">
-                    <p>"I love that it's open-source and ad-free. Great job, FadSec Lab!"</p>
-                    <span class="review-author">- Alex K.</span>
+                
+                <div class="review-card">
+                    <div class="review-content">
+                        <p>"I Like the app and use it, I actually thought about an app like that but didn't knew that it already existed until I saw an YouTube Video"</p>
+                    </div>
+                    <div class="review-author">
+                        <div class="author-avatar">
+                            <i class="fas fa-user"></i>
+                        </div>
+                        <span>uekssarvik09</span>
+                    </div>
+                </div>
+                
+                <div class="review-card">
+                    <div class="review-content">
+                        <p>"This is an amazing app, and the developer is very active to solve issues"</p>
+                    </div>
+                    <div class="review-author">
+                        <div class="author-avatar">
+                            <i class="fas fa-user-secret"></i>
+                        </div>
+                        <span>Anonymous</span>
+                    </div>
+                </div>
+                
+                <div class="review-card">
+                    <div class="review-content">
+                        <p>"This app works well. I am a captain so it is very useful for me. I use it to make secret videos in many places. Thanks for the app. Thanks to all developers."</p>
+                    </div>
+                    <div class="review-author">
+                        <div class="author-avatar">
+                            <i class="fas fa-user"></i>
+                        </div>
+                        <span>M. H. Mahim</span>
+                    </div>
+                </div>
+                
+                <div class="review-card">
+                    <div class="review-content">
+                        <p>"Amazing app for emergency situation."</p>
+                    </div>
+                    <div class="review-author">
+                        <div class="author-avatar">
+                            <i class="fas fa-user"></i>
+                        </div>
+                        <span>Aniruddh</span>
+                    </div>
+                </div>
+                
+                <div class="review-card">
+                    <div class="review-content">
+                        <p>"It's good for safety"</p>
+                    </div>
+                    <div class="review-author">
+                        <div class="author-avatar">
+                            <i class="fas fa-user"></i>
+                        </div>
+                        <span>Nero jack</span>
+                    </div>
+                </div>
+                
+                <div class="review-card">
+                    <div class="review-content">
+                        <p>"The app is incredible."</p>
+                    </div>
+                    <div class="review-author">
+                        <div class="author-avatar">
+                            <i class="fas fa-user-secret"></i>
+                        </div>
+                        <span>Anonymous</span>
+                    </div>
+                </div>
+                
+                <div class="review-card">
+                    <div class="review-content">
+                        <p>"It's working great"</p>
+                    </div>
+                    <div class="review-author">
+                        <div class="author-avatar">
+                            <i class="fas fa-user-secret"></i>
+                        </div>
+                        <span>Anonymous</span>
+                    </div>
                 </div>
             </div>
         </section>
@@ -150,10 +286,10 @@
     <footer>
         <div class="container">
             <div class="social-links">
-                <a href="#" aria-label="Discord"><i class="fab fa-discord"></i></a>
-                <a href="#" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+                <a href="https://discord.gg/kvAZvdkuuN" aria-label="Discord"><i class="fab fa-discord"></i></a>
+                <!-- <a href="#" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a> -->
             </div>
-            <p>&copy; 2024 FadSec Lab. All rights reserved.</p>
+            <p>&copy; 2024-2025 FadSec Lab. All rights reserved.</p>
         </div>
     </footer>
 
