@@ -969,18 +969,15 @@ section {
 }
 
 .faq-answer {
-    max-height: 0;
-    padding: 0 20px;
-    overflow: hidden;
-    transition: max-height 0.5s ease, padding 0.5s ease;
-    opacity: 0;
+    display: none;
+    padding: 20px;
     line-height: 1.7;
+    background-color: rgba(10, 10, 10, 0.5);
+    border-top: 1px solid rgba(229, 57, 53, 0.2);
 }
 
 .faq-item.active .faq-answer {
-    max-height: 300px;
-    padding: 20px;
-    opacity: 1;
+    display: block;
 }
 
 /* =====================

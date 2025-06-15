@@ -469,7 +469,7 @@
                         How does FadCam ensure user privacy?
                         <i class="fas fa-chevron-down"></i>
                     </div>
-                    <div class="faq-answer">FadCam is designed with privacy in mind. All recordings are stored locally on your device, and no data is sent to external servers without your explicit consent.</div>
+                    <div class="faq-answer">FadCam is designed with privacy in mind. All recordings are stored locally on your device, and no data is sent anywhere.</div>
                 </div>
                 <div class="faq-item" data-aos="fade-right" data-aos-delay="200">
                     <div class="faq-question">
@@ -584,9 +584,11 @@
             }, 300);
         }
 
-        // FAQ accordion
-        $('.faq-question').click(function() {
-            $(this).parent('.faq-item').toggleClass('active');
+        // FAQ accordion - Fixed implementation
+        $(document).ready(function() {
+            $('.faq-question').on('click', function() {
+                $(this).parent('.faq-item').toggleClass('active');
+            });
         });
 
         // Scroll to top button
@@ -635,6 +637,30 @@
             $('.stat-number[data-count="4"]').text('4');
             
             // Countries counter is pre-set to 15 in the HTML
+        });
+    </script>
+    
+    <!-- Direct FAQ implementation -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const faqQuestions = document.querySelectorAll('.faq-question');
+            
+            faqQuestions.forEach(question => {
+                question.addEventListener('click', function() {
+                    const faqItem = this.parentNode;
+                    const isActive = faqItem.classList.contains('active');
+                    
+                    // Close all other FAQ items
+                    document.querySelectorAll('.faq-item').forEach(item => {
+                        item.classList.remove('active');
+                    });
+                    
+                    // Toggle the clicked item
+                    if (!isActive) {
+                        faqItem.classList.add('active');
+                    }
+                });
+            });
         });
     </script>
 </body>
