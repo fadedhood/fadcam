@@ -1212,7 +1212,7 @@ footer {
     position: relative;
     z-index: 2;
     animation: float 6s ease-in-out infinite;
-    filter: drop-shadow(0 20px 30px rgba(0, 0, 0, 0.5)); /* Changed to black shadow */
+    filter: drop-shadow(0 20px 30px rgba(229, 57, 53, 0.7));
     border-radius: 30px;
 }
 
