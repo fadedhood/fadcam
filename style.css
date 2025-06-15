@@ -26,7 +26,6 @@ body {
     padding: 0 20px;
 }
 
-/* Header styles */
 header {
     position: fixed;
     width: 90%;
@@ -35,7 +34,7 @@ header {
     z-index: 1000;
     transition: transform var(--transition-speed) ease, padding var(--transition-speed) ease;
     border-radius: 20px;
-    overflow: hidden;
+    /* Remove overflow: hidden */
 }
 
 .topbar {
