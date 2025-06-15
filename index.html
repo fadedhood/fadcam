@@ -18,7 +18,9 @@
         <meta name="twitter:image" content="https://raw.githubusercontent.com/fadedhood/fadcam/main/img/banner.jpg">
         <link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;400;500;700&display=swap" rel="stylesheet">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+        <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
         <link rel="stylesheet" href="style.css">
+        <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
     </head>
     <body>
         <header>
@@ -51,11 +53,11 @@
 
     <main>
         <section class="hero">
-            <div class="hero-background"></div>
-            <div class="hero-content">
-                <h1>FadCam</h1>
-                <p>Seamless background video recorder for Android – ad-free and open-source, with customizable options.</p>
-                <div class="cta-buttons">
+            <div id="particles-js" class="hero-background"></div>
+            <div class="hero-content" data-aos="zoom-in" data-aos-duration="1000">
+                <h1 data-aos="fade-up" data-aos-delay="200">FadCam</h1>
+                <p data-aos="fade-up" data-aos-delay="400">Seamless background video recorder for Android – ad-free and open-source, with customizable options.</p>
+                <div class="cta-buttons" data-aos="fade-up" data-aos-delay="600">
                     <a href="https://github.com/anonfaded/FadCam/releases" class="button">Download on GitHub</a>
                     <a href="https://f-droid.org/packages/com.fadcam" class="button">Get it on F-Droid</a>
                 </div>
@@ -63,46 +65,101 @@
         </section>
 
         <section id="features" class="container">
-            <h2 class="section-title">Features</h2>
-            <div class="features">
-                <div class="feature">
-                    <i class="fas fa-video"></i>
-                    <h3>Background Recording</h3>
-                    <p>Record videos with your screen off for discreet capture.</p>
+            <h2 class="section-title" data-aos="fade-up">Features</h2>
+            <div class="features-container">
+                <div class="features-col" data-aos="fade-up" data-aos-delay="100">
+                    <h3 class="features-subtitle">Current Features</h3>
+                    <ul class="features-list">
+                        <li><i class="fas fa-video"></i> Background Video Recording: Record discreetly even with the screen off.</li>
+                        <li><i class="fas fa-palette"></i> Modern UI: Clean, Material-inspired design with bottom sheet actions.</li>
+                        <li><i class="fas fa-volume-up"></i> Audio Controls: Toggle audio, choose bitrate, and select mic input (wired/Bluetooth).</li>
+                        <li><i class="fas fa-cog"></i> Video Settings: Configure orientation, bitrate, and fixed framerate (60/90fps supported).</li>
+                        <li><i class="fas fa-cut"></i> Auto Video Splitting: Automatically split large recordings based on size.</li>
+                        <li><i class="fas fa-map-marker-alt"></i> Geotagging: Embed location data into video metadata.</li>
+                        <li><i class="fas fa-camera"></i> Wide-Angle Detection: Auto-detect wide-angle camera support.</li>
+                        <li><i class="fas fa-sort"></i> Sorting & Filters: Sort videos by date, size, and more.</li>
+                        <li><i class="fas fa-image"></i> Enhanced Thumbnails: Show index, duration, and file size.</li>
+                        <li><i class="fas fa-trash"></i> Trash Bin: Restore deleted videos or auto-delete after a set time.</li>
+                        <li><i class="fas fa-check-square"></i> Select All in Trash: Bulk actions made easier.</li>
+                        <li><i class="fas fa-play-circle"></i> Inbuilt Video Player: Smooth playback using ExoPlayer.</li>
+                        <li><i class="fas fa-copyright"></i> Dynamic Watermarks: Add timestamp, logo, and GPS watermark options.</li>
+                        <li><i class="fas fa-info-circle"></i> Video Info View: View details like resolution, size, and duration.</li>
+                        <li><i class="fas fa-edit"></i> Video Renaming: Rename recordings directly in-app.</li>
+                        <li><i class="fas fa-hdd"></i> Storage Indicator: Real-time storage info with estimated record time.</li>
+                        <li><i class="fas fa-clock"></i> Clock Widget: Customizable date/time widget with color options.</li>
+                        <li><i class="fas fa-paint-brush"></i> 7+ App Themes & 15+ Icons: AMOLED, Light, System, and more.</li>
+                        <li><i class="fas fa-language"></i> Localization: Italian language support.</li>
+                        <li><i class="fas fa-ban"></i> No Ads: 100% free and ad-free.</li>
+                    </ul>
                 </div>
-                <div class="feature">
-                    <i class="fas fa-ban"></i>
-                    <h3>Ad-Free Experience</h3>
-                    <p>Enjoy a clean, distraction-free interface without any advertisements.</p>
+                <div class="features-col" data-aos="fade-up" data-aos-delay="300">
+                    <h3 class="features-subtitle">Upcoming Features</h3>
+                    <ul class="features-list upcoming">
+                        <li><i class="fas fa-calendar-alt"></i> Scheduled Recording: Automatically start/stop recordings at set times.</li>
+                        <li><i class="fab fa-google-drive"></i> Google Drive Auto-Upload: Seamless cloud backup for videos.</li>
+                        <li><i class="fas fa-icons"></i> Custom Icons & Themes: Expand personalization even further.</li>
+                        <li><i class="fas fa-film"></i> In-App Video Editor: Quick trim/edit with FaditorX (coming soon).</li>
+                        <li><i class="fas fa-wifi"></i> Remote Tab: Connect and control recordings across devices.</li>
+                        <li><i class="fas fa-folder"></i> Custom Save Paths: Set your preferred video storage location.</li>
+                    </ul>
                 </div>
-                <div class="feature">
-                    <i class="fas fa-sliders-h"></i>
-                    <h3>Customizable Options</h3>
-                    <p>Tailor the app to your needs with various settings and preferences.</p>
+            </div>
+        </section>
+
+        <section id="showcase" class="container">
+            <h2 class="section-title" data-aos="fade-up">Why Choose FadCam?</h2>
+            <div class="showcase-container">
+                <div class="showcase-text" data-aos="fade-right" data-aos-delay="100">
+                    <div class="showcase-item">
+                        <div class="showcase-icon">
+                            <i class="fas fa-shield-alt"></i>
+                        </div>
+                        <div class="showcase-content">
+                            <h3>Privacy-Focused</h3>
+                            <p>Your data never leaves your device. No server uploads, no tracking, complete privacy guaranteed.</p>
+                        </div>
+                    </div>
+                    <div class="showcase-item" data-aos="fade-right" data-aos-delay="200">
+                        <div class="showcase-icon">
+                            <i class="fas fa-bolt"></i>
+                        </div>
+                        <div class="showcase-content">
+                            <h3>Lightning Fast</h3>
+                            <p>Engineered for performance, FadCam starts recording in milliseconds when you need it most.</p>
+                        </div>
+                    </div>
+                    <div class="showcase-item" data-aos="fade-right" data-aos-delay="300">
+                        <div class="showcase-icon">
+                            <i class="fas fa-battery-full"></i>
+                        </div>
+                        <div class="showcase-content">
+                            <h3>Battery Efficient</h3>
+                            <p>Optimized to use minimal resources while recording in the background.</p>
+                        </div>
+                    </div>
                 </div>
-                <div class="feature">
-                    <i class="fas fa-code-branch"></i>
-                    <h3>Open Source</h3>
-                    <p>Transparent development with community contributions welcome.</p>
+                <div class="showcase-image" data-aos="zoom-in" data-aos-delay="100">
+                    <img src="img/icon3.png" alt="FadCam App" class="floating-image">
+                    <div class="showcase-circle"></div>
                 </div>
             </div>
         </section>
 
         <section id="screenshots" class="container">
-            <h2 class="section-title">Screenshots</h2>
-            <div class="screenshots-slider">
+            <h2 class="section-title" data-aos="fade-up">Screenshots</h2>
+            <div class="screenshots-slider" data-aos="fade-up" data-aos-delay="100">
                 <button class="slider-arrow prev"><i class="fas fa-chevron-left"></i></button>
                 <div class="screenshots">
-                    <img src="img/1.jpg" alt="FadCam Screenshot 1">
-                    <img src="img/2.jpg" alt="FadCam Screenshot 2">
-                    <img src="img/3.jpg" alt="FadCam Screenshot 3">
-                    <img src="img/4.jpg" alt="FadCam Screenshot 4">
-                    <img src="img/5.jpg" alt="FadCam Screenshot 5">
-                    <img src="img/6.jpg" alt="FadCam Screenshot 6">
-                    <img src="img/7.jpg" alt="FadCam Screenshot 7">
-                    <img src="img/8.jpg" alt="FadCam Screenshot 8">
-                    <img src="img/9.jpg" alt="FadCam Screenshot 9">
-                    <img src="img/10.jpg" alt="FadCam Screenshot 10">
+                    <img src="img/1.jpg" alt="FadCam Screenshot 1" data-aos="zoom-in" data-aos-delay="100">
+                    <img src="img/2.jpg" alt="FadCam Screenshot 2" data-aos="zoom-in" data-aos-delay="150">
+                    <img src="img/3.jpg" alt="FadCam Screenshot 3" data-aos="zoom-in" data-aos-delay="200">
+                    <img src="img/4.jpg" alt="FadCam Screenshot 4" data-aos="zoom-in" data-aos-delay="250">
+                    <img src="img/5.jpg" alt="FadCam Screenshot 5" data-aos="zoom-in" data-aos-delay="300">
+                    <img src="img/6.jpg" alt="FadCam Screenshot 6" data-aos="zoom-in" data-aos-delay="350">
+                    <img src="img/7.jpg" alt="FadCam Screenshot 7" data-aos="zoom-in" data-aos-delay="400">
+                    <img src="img/8.jpg" alt="FadCam Screenshot 8" data-aos="zoom-in" data-aos-delay="450">
+                    <img src="img/9.jpg" alt="FadCam Screenshot 9" data-aos="zoom-in" data-aos-delay="500">
+                    <img src="img/10.jpg" alt="FadCam Screenshot 10" data-aos="zoom-in" data-aos-delay="550">
                 </div>
                 <button class="slider-arrow next"><i class="fas fa-chevron-right"></i></button>
             </div>
@@ -113,39 +170,99 @@
             <img class="modal-content" id="modalImage">
         </div>
 
-        <section id="featured" class="container">
-            <h2 class="section-title">Featured On</h2>
-            <p class="featured-subtitle">Recognized on 55+ platforms worldwide</p>
+        <section id="stats" class="container">
+            <h2 class="section-title" data-aos="fade-up">Global Reach</h2>
+            <div class="stats-container" data-aos="fade-up">
+                <div class="stat-item" data-aos="zoom-in" data-aos-delay="100">
+                    <div class="stat-number" data-count="65">0</div>
+                    <div class="stat-label">K+ Downloads</div>
+                </div>
+                <div class="stat-item" data-aos="zoom-in" data-aos-delay="200">
+                    <div class="stat-number" data-count="55">0</div>
+                    <div class="stat-label">Featured Platforms</div>
+                </div>
+                <div class="stat-item" data-aos="zoom-in" data-aos-delay="300">
+                    <div class="stat-number" data-count="4">0</div>
+                    <div class="stat-label">/ 5 Average Rating</div>
+                </div>
+            </div>
             
-            <div class="featured-videos">
-                <div class="video-container">
+            <div class="world-map-container" data-aos="fade-up" data-aos-delay="200">
+                <h3 class="map-title">Used Worldwide</h3>
+                <div class="world-map">
+                    <div class="map-point" style="top: 22%; left: 17%;" data-country="USA">
+                        <div class="country-tooltip">United States</div>
+                    </div>
+                    <div class="map-point" style="top: 20%; left: 49%;" data-country="Russia">
+                        <div class="country-tooltip">Russia</div>
+                    </div>
+                    <div class="map-point" style="top: 20%; left: 52%;" data-country="UK">
+                        <div class="country-tooltip">United Kingdom</div>
+                    </div>
+                    <div class="map-point" style="top: 24%; left: 48%;" data-country="France">
+                        <div class="country-tooltip">France</div>
+                    </div>
+                    <div class="map-point" style="top: 24%; left: 52%;" data-country="Italy">
+                        <div class="country-tooltip">Italy</div>
+                    </div>
+                    <div class="map-point" style="top: 26%; left: 48%;" data-country="Spain">
+                        <div class="country-tooltip">Spain</div>
+                    </div>
+                    <div class="map-point" style="top: 28%; left: 58%;" data-country="Saudi">
+                        <div class="country-tooltip">Saudi Arabia</div>
+                    </div>
+                    <div class="map-point" style="top: 30%; left: 63%;" data-country="Pakistan">
+                        <div class="country-tooltip">Pakistan</div>
+                    </div>
+                    <div class="map-point" style="top: 32%; left: 68%;" data-country="India">
+                        <div class="country-tooltip">India</div>
+                    </div>
+                    <div class="map-point" style="top: 40%; left: 78%;" data-country="Indonesia">
+                        <div class="country-tooltip">Indonesia</div>
+                    </div>
+                    <div class="map-point" style="top: 26%; left: 83%;" data-country="China">
+                        <div class="country-tooltip">China</div>
+                    </div>
+                    <div class="map-point" style="top: 28%; left: 53%;" data-country="Turkey">
+                        <div class="country-tooltip">Turkey</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="featured" class="container">
+            <h2 class="section-title" data-aos="fade-up">Featured On</h2>
+            <p class="featured-subtitle" data-aos="fade-up" data-aos-delay="100">Recognized on 55+ platforms worldwide</p>
+            
+            <div class="featured-videos" data-aos="fade-up" data-aos-delay="150">
+                <div class="video-container" data-aos="zoom-in" data-aos-delay="200">
                     <iframe width="560" height="315" src="https://www.youtube.com/embed/3pOoU5JjfnE?si=lWV6xwdf_dUUUuXB&amp;start=522" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
                 </div>
-                <div class="video-container">
+                <div class="video-container" data-aos="zoom-in" data-aos-delay="300">
                     <iframe width="560" height="315" src="https://www.youtube.com/embed/E4Row0mFbfk?si=sBrZ44Pc_fabW4S4&amp;start=519" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
                 </div>
             </div>
             
             <div class="featured-partners">
-                <a href="https://www.computer-wd.com/2024/12/best-android-apps-2024.html" class="partner-link" target="_blank">
+                <a href="https://www.computer-wd.com/2024/12/best-android-apps-2024.html" class="partner-link" target="_blank" data-aos="zoom-in-up" data-aos-delay="100">
                     <div class="partner-card">
                         <i class="fas fa-newspaper"></i>
                         <span>Computer-WD</span>
                     </div>
                 </a>
-                <a href="https://fadcam.en.uptodown.com/android" class="partner-link" target="_blank">
+                <a href="https://fadcam.en.uptodown.com/android" class="partner-link" target="_blank" data-aos="zoom-in-up" data-aos-delay="150">
                     <div class="partner-card">
                         <i class="fas fa-download"></i>
                         <span>Uptodown</span>
                     </div>
                 </a>
-                <a href="https://en.xiaomitoday.it/fadcam-con-questa-app-diventi-un-agente-segreto.html" class="partner-link" target="_blank">
+                <a href="https://en.xiaomitoday.it/fadcam-con-questa-app-diventi-un-agente-segreto.html" class="partner-link" target="_blank" data-aos="zoom-in-up" data-aos-delay="200">
                     <div class="partner-card">
                         <i class="fas fa-mobile-alt"></i>
                         <span>XiaomiToday</span>
                     </div>
                 </a>
-                <a href="https://www.openapk.net/fadcam/com.fadcam/" class="partner-link" target="_blank">
+                <a href="https://www.openapk.net/fadcam/com.fadcam/" class="partner-link" target="_blank" data-aos="zoom-in-up" data-aos-delay="250">
                     <div class="partner-card">
                         <i class="fas fa-puzzle-piece"></i>
                         <span>OpenAPK</span>
@@ -155,9 +272,9 @@
         </section>
 
         <section id="reviews" class="container">
-            <h2 class="section-title">User Reviews</h2>
+            <h2 class="section-title" data-aos="fade-up">User Reviews</h2>
             <div class="reviews-container">
-                <div class="review-card">
+                <div class="review-card" data-aos="flip-left" data-aos-delay="100">
                     <div class="review-content">
                         <p>"Very great, I really liked that your app is completely free and just works on the latest android version. I hope you continue making it better!"</p>
                     </div>
@@ -169,7 +286,7 @@
                     </div>
                 </div>
                 
-                <div class="review-card">
+                <div class="review-card" data-aos="flip-left" data-aos-delay="200">
                     <div class="review-content">
                         <p>"Exactly what I needed"</p>
                     </div>
@@ -181,7 +298,7 @@
                     </div>
                 </div>
                 
-                <div class="review-card">
+                <div class="review-card" data-aos="flip-left" data-aos-delay="300">
                     <div class="review-content">
                         <p>"I Like the app and use it, I actually thought about an app like that but didn't knew that it already existed until I saw an YouTube Video"</p>
                     </div>
@@ -193,7 +310,7 @@
                     </div>
                 </div>
                 
-                <div class="review-card">
+                <div class="review-card" data-aos="flip-left" data-aos-delay="400">
                     <div class="review-content">
                         <p>"This is an amazing app, and the developer is very active to solve issues"</p>
                     </div>
@@ -205,7 +322,7 @@
                     </div>
                 </div>
                 
-                <div class="review-card">
+                <div class="review-card" data-aos="flip-left" data-aos-delay="500">
                     <div class="review-content">
                         <p>"This app works well. I am a captain so it is very useful for me. I use it to make secret videos in many places. Thanks for the app. Thanks to all developers."</p>
                     </div>
@@ -217,7 +334,7 @@
                     </div>
                 </div>
                 
-                <div class="review-card">
+                <div class="review-card" data-aos="flip-left" data-aos-delay="600">
                     <div class="review-content">
                         <p>"Amazing app for emergency situation."</p>
                     </div>
@@ -229,7 +346,7 @@
                     </div>
                 </div>
                 
-                <div class="review-card">
+                <div class="review-card" data-aos="flip-left" data-aos-delay="700">
                     <div class="review-content">
                         <p>"It's good for safety"</p>
                     </div>
@@ -241,7 +358,7 @@
                     </div>
                 </div>
                 
-                <div class="review-card">
+                <div class="review-card" data-aos="flip-left" data-aos-delay="800">
                     <div class="review-content">
                         <p>"The app is incredible."</p>
                     </div>
@@ -253,7 +370,7 @@
                     </div>
                 </div>
                 
-                <div class="review-card">
+                <div class="review-card" data-aos="flip-left" data-aos-delay="900">
                     <div class="review-content">
                         <p>"It's working great"</p>
                     </div>
@@ -268,28 +385,45 @@
         </section>
 
         <section id="faq" class="container">
-            <h2 class="section-title">Privacy Info</h2>
-            <div class="faq">
-                <div class="faq-item">
+            <h2 class="section-title" data-aos="fade-up">Privacy Info</h2>
+            <div class="faq" data-aos="fade-up" data-aos-delay="100">
+                <div class="faq-item" data-aos="fade-right" data-aos-delay="100">
                     <div class="faq-question">
                         How does FadCam ensure user privacy?
                         <i class="fas fa-chevron-down"></i>
                     </div>
                     <div class="faq-answer">FadCam is designed with privacy in mind. All recordings are stored locally on your device, and no data is sent to external servers without your explicit consent.</div>
                 </div>
-                <div class="faq-item">
+                <div class="faq-item" data-aos="fade-right" data-aos-delay="200">
                     <div class="faq-question">
                         Is FadCam open-source?
                         <i class="fas fa-chevron-down"></i>
                     </div>
                     <div class="faq-answer">Yes, FadCam is completely open-source. You can view and contribute to the code on our GitHub repository.</div>
                 </div>
-                <div class="faq-item">
+                <div class="faq-item" data-aos="fade-right" data-aos-delay="300">
                     <div class="faq-question">
                         Can I use FadCam for any purpose?
                         <i class="fas fa-chevron-down"></i>
                     </div>
                     <div class="faq-answer">FadCam is intended for ethical use only, such as personal security, research, or documentation. We do not condone any illegal or unethical use of the app.</div>
+                </div>
+            </div>
+        </section>
+
+        <section id="cta" class="container">
+            <div class="cta-container" data-aos="fade-up">
+                <div class="cta-content">
+                    <h2>Ready to Experience FadCam?</h2>
+                    <p>Join thousands of users who trust FadCam for their background recording needs. Download now and see the difference!</p>
+                    <div class="cta-actions">
+                        <a href="https://github.com/anonfaded/FadCam/releases" class="button">Download on GitHub</a>
+                        <a href="https://f-droid.org/packages/com.fadcam" class="button button-alt">Get it on F-Droid</a>
+                    </div>
+                </div>
+                <div class="cta-graphic">
+                    <div class="cta-circle"></div>
+                    <i class="fas fa-video"></i>
                 </div>
             </div>
         </section>
@@ -305,6 +439,19 @@
         </div>
     </footer>
 
+    <div id="scroll-to-top" class="scroll-to-top">
+        <i class="fas fa-arrow-up"></i>
+    </div>
+
     <script src="script.js"></script>
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script>
+        AOS.init({
+            duration: 800,
+            easing: 'ease',
+            once: false,
+            mirror: false
+        });
+    </script>
 </body>
 </html>
