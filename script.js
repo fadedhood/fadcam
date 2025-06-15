@@ -116,18 +116,30 @@ document.addEventListener('DOMContentLoaded', () => {
     // Statistics Counter
     // =====================
     const statNumbers = document.querySelectorAll('.stat-number');
+    const statsSection = document.getElementById('stats');
     let countersStarted = false;
     
-    // Start counters with a small delay to ensure DOM is ready
-    setTimeout(() => {
-        startCounters();
-    }, 500);
+    // Don't start counters immediately, only when in view
+    function checkCounters() {
+        if (countersStarted) return;
+        
+        if (statsSection) {
+            const rect = statsSection.getBoundingClientRect();
+            // Start animation when stats section is in view
+            if (rect.top < window.innerHeight - 100 && rect.bottom > 0) {
+                startCounters();
+            }
+        }
+    }
     
     function startCounters() {
         if (countersStarted) return;
         
         countersStarted = true;
         statNumbers.forEach(stat => {
+            // Reset to 0 first
+            stat.textContent = '0';
+            
             const target = parseInt(stat.getAttribute('data-count'));
             const duration = 2500; // 2.5 seconds animation
             const frameRate = 1000 / 60; // 60fps
@@ -152,16 +164,11 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
     
-    // Ensure counters start when scrolled into view as well
-    window.addEventListener('scroll', () => {
-        const statsSection = document.getElementById('stats');
-        if (statsSection) {
-            const rect = statsSection.getBoundingClientRect();
-            if (rect.top < window.innerHeight && rect.bottom > 0) {
-                startCounters();
-            }
-        }
-    });
+    // Check counters on initial load (with a small delay to ensure DOM is ready)
+    setTimeout(checkCounters, 500);
+    
+    // Check counters when scrolling
+    window.addEventListener('scroll', checkCounters);
 
     // Easing function for smoother animation
     function easeOutQuad(x) {
