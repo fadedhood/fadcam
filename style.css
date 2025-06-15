@@ -535,9 +535,9 @@ section {
 
 .screenshots {
     display: flex;
-    gap: 20px;
+    gap: 10px;
     overflow-x: auto;
-    padding: 20px 0;
+    padding: 30px 0;
     scrollbar-width: thin;
     scroll-behavior: smooth;
     mask-image: linear-gradient(to right, transparent, black 5%, black 95%, transparent);
@@ -549,16 +549,17 @@ section {
     height: 400px;
     object-fit: cover;
     border-radius: 15px;
-    margin: 0 10px;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    margin: 0 5px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
     transition: all 0.3s ease;
     cursor: pointer;
     border: 2px solid transparent;
+    transform-origin: center bottom;
 }
 
 .screenshot-img:hover {
     transform: translateY(-10px) scale(1.02);
-    box-shadow: 0 15px 35px rgba(229, 57, 53, 0.3);
+    box-shadow: 0 15px 25px rgba(229, 57, 53, 0.3);
     border-color: var(--primary-color);
 }
 
@@ -574,18 +575,17 @@ section {
     background-color: rgba(0, 0, 0, 0.9);
     opacity: 0;
     transition: opacity 0.3s ease;
+    justify-content: center;
+    align-items: center;
 }
 
 .modal.active {
-    display: flex;
-    justify-content: center;
-    align-items: center;
     opacity: 1;
 }
 
 .modal-content {
     max-width: 90%;
-    max-height: 90%;
+    max-height: 90vh;
     object-fit: contain;
     border-radius: 8px;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);

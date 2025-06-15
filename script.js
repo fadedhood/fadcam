@@ -118,8 +118,10 @@ document.addEventListener('DOMContentLoaded', () => {
     const statNumbers = document.querySelectorAll('.stat-number');
     let countersStarted = false;
     
-    // Start counters immediately
-    startCounters();
+    // Start counters with a small delay to ensure DOM is ready
+    setTimeout(() => {
+        startCounters();
+    }, 500);
     
     function startCounters() {
         if (countersStarted) return;
@@ -127,7 +129,7 @@ document.addEventListener('DOMContentLoaded', () => {
         countersStarted = true;
         statNumbers.forEach(stat => {
             const target = parseInt(stat.getAttribute('data-count'));
-            const duration = 2000; // 2 seconds animation
+            const duration = 2500; // 2.5 seconds animation
             const frameRate = 1000 / 60; // 60fps
             const totalFrames = Math.floor(duration / frameRate);
             let frame = 0;
@@ -150,6 +152,17 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
     
+    // Ensure counters start when scrolled into view as well
+    window.addEventListener('scroll', () => {
+        const statsSection = document.getElementById('stats');
+        if (statsSection) {
+            const rect = statsSection.getBoundingClientRect();
+            if (rect.top < window.innerHeight && rect.bottom > 0) {
+                startCounters();
+            }
+        }
+    });
+
     // Easing function for smoother animation
     function easeOutQuad(x) {
         return 1 - (1 - x) * (1 - x);
@@ -177,21 +190,37 @@ document.addEventListener('DOMContentLoaded', () => {
     // Add click events for all screenshot images
     screenshotImages.forEach((img, index) => {
         img.onclick = function() {
-            modalImage.src = this.src;
             currentImageIndex = index;
+            modalImage.src = this.src;
+            
+            // Show modal first with display flex
             screenshotModal.style.display = "flex";
             document.body.style.overflow = "hidden";
             
-            // Trigger animation after a small delay
+            // Force reflow to ensure transition works
+            void screenshotModal.offsetWidth;
+            
+            // Then add active class for animation
+            screenshotModal.classList.add('active');
+            
+            // Animate the image in
             setTimeout(() => {
-                screenshotModal.classList.add('active');
+                modalImage.style.opacity = "1";
+                modalImage.style.transform = "scale(1)";
             }, 10);
         };
     });
     
     // Close modal on X click
-    closeModal.onclick = function() {
+    closeModal.onclick = function(e) {
+        e.stopPropagation();
+        
+        // First remove active class
         screenshotModal.classList.remove('active');
+        modalImage.style.opacity = "0";
+        modalImage.style.transform = "scale(0.9)";
+        
+        // Then hide after animation completes
         setTimeout(() => {
             screenshotModal.style.display = "none";
             document.body.style.overflow = "auto";
@@ -201,43 +230,52 @@ document.addEventListener('DOMContentLoaded', () => {
     // Close modal on outside click
     screenshotModal.onclick = function(e) {
         if (e.target === screenshotModal) {
-            closeModal.onclick();
+            closeModal.onclick(e);
         }
     };
     
     // Navigate to previous image
     modalPrev.onclick = function(e) {
         e.stopPropagation();
-        currentImageIndex = (currentImageIndex - 1 + allImages.length) % allImages.length;
-        modalImage.classList.add('fade-out');
-        
-        setTimeout(() => {
-            modalImage.src = allImages[currentImageIndex].src;
-            modalImage.classList.remove('fade-out');
-        }, 300);
+        navigateImage(-1);
     };
     
     // Navigate to next image
     modalNext.onclick = function(e) {
         e.stopPropagation();
-        currentImageIndex = (currentImageIndex + 1) % allImages.length;
-        modalImage.classList.add('fade-out');
+        navigateImage(1);
+    };
+    
+    // Common navigation function
+    function navigateImage(direction) {
+        // Fade out current image
+        modalImage.style.opacity = "0";
+        modalImage.style.transform = "scale(0.9)";
         
         setTimeout(() => {
+            // Update index
+            currentImageIndex = (currentImageIndex + direction + allImages.length) % allImages.length;
+            
+            // Change source
             modalImage.src = allImages[currentImageIndex].src;
-            modalImage.classList.remove('fade-out');
-        }, 300);
-    };
+            
+            // Fade in new image
+            setTimeout(() => {
+                modalImage.style.opacity = "1";
+                modalImage.style.transform = "scale(1)";
+            }, 50);
+        }, 200);
+    }
     
     // Keyboard navigation
     document.addEventListener('keydown', function(e) {
         if (screenshotModal.classList.contains('active')) {
             if (e.key === 'Escape') {
-                closeModal.onclick();
+                closeModal.onclick(e);
             } else if (e.key === 'ArrowLeft') {
-                modalPrev.onclick(e);
+                navigateImage(-1);
             } else if (e.key === 'ArrowRight') {
-                modalNext.onclick(e);
+                navigateImage(1);
             }
         }
     });
