@@ -1412,6 +1412,7 @@ footer {
     z-index: 10;
     pointer-events: auto;
     cursor: pointer;
+    transition: z-index 0.01s;
 }
 
 .point-pulse {
@@ -1473,11 +1474,12 @@ footer {
     font-size: 0.9rem;
     white-space: nowrap;
     opacity: 0;
+    visibility: hidden;
     pointer-events: none;
-    transition: opacity 0.3s ease;
+    transition: all 0.3s ease;
     border: 1px solid rgba(255, 255, 255, 0.3);
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
-    z-index: 10;
+    z-index: 1000;
 }
 
 .country-tooltip::after {
@@ -1493,11 +1495,18 @@ footer {
 
 .map-point:hover .country-tooltip {
     opacity: 1;
+    visibility: visible;
+    pointer-events: none;
+}
+
+.map-point:hover {
+    z-index: 500 !important;
+    position: relative;
 }
 
 .map-point:hover .point-pulse {
-    background: var(--primary-color);
-    box-shadow: 0 0 15px var(--primary-color), 0 0 30px rgba(229, 57, 53, 0.7);
+    background: #ff0000;
+    box-shadow: 0 0 15px #ff0000, 0 0 30px rgba(255, 0, 0, 0.7);
 }
 
 @media (max-width: 768px) {
