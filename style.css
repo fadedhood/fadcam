@@ -291,9 +291,9 @@ header {
     backdrop-filter: blur(5px);
     -webkit-backdrop-filter: blur(5px);
     border-radius: 30px;
-    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
-    background: rgba(10, 10, 10, 0.6);
-    border: 1px solid rgba(229, 57, 53, 0.2);
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.25);
+    background: rgba(10, 10, 10, 0.7);
+    border: 1px solid rgba(229, 57, 53, 0.15);
     transform: perspective(1000px) translateZ(0px);
     transition: transform 0.5s cubic-bezier(0.165, 0.84, 0.44, 1);
 }
@@ -301,15 +301,15 @@ header {
 .hero-content::before {
     content: '';
     position: absolute;
-    top: -2px;
-    left: -2px;
-    right: -2px;
-    bottom: -2px;
+    top: -1px;
+    left: -1px;
+    right: -1px;
+    bottom: -1px;
     background: var(--gradient-primary);
     z-index: -1;
-    border-radius: 32px;
-    filter: blur(14px);
-    opacity: 0.4;
+    border-radius: 31px;
+    filter: blur(8px);
+    opacity: 0.2;
 }
 
 .hero-content h1 {
@@ -415,8 +415,8 @@ section {
 
 /* Features section styles */
 .features-container {
-    display: flex;
-    justify-content: space-between;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
     gap: 40px;
     margin-top: 40px;
 }
@@ -425,7 +425,7 @@ section {
     flex: 1;
     background-color: var(--card-bg);
     border-radius: 20px;
-    padding: 40px;
+    padding: 30px;
     box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
     border: 1px solid rgba(229, 57, 53, 0.1);
     position: relative;
@@ -461,17 +461,21 @@ section {
     padding: 0;
     position: relative;
     z-index: 1;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 15px;
 }
 
 .features-list li {
-    margin-bottom: 18px;
-    padding: 15px 20px;
+    margin-bottom: 0;
+    padding: 12px 15px;
     background-color: rgba(0, 0, 0, 0.2);
     border-radius: 12px;
     display: flex;
     align-items: flex-start;
     transition: all 0.3s ease;
     border: 1px solid rgba(229, 57, 53, 0.05);
+    font-size: 0.95rem;
 }
 
 .features-list li:hover {
@@ -500,7 +504,21 @@ section {
 
 @media (max-width: 992px) {
     .features-container {
-        flex-direction: column;
+        grid-template-columns: 1fr;
+    }
+    
+    .features-list {
+        grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    }
+}
+
+@media (max-width: 768px) {
+    .features-list {
+        grid-template-columns: 1fr;
+    }
+    
+    .features-list li {
+        padding: 10px 15px;
     }
 }
 
@@ -526,105 +544,125 @@ section {
     -webkit-mask-image: linear-gradient(to right, transparent, black 5%, black 95%, transparent);
 }
 
-.screenshots img {
-    width: 250px;
-    height: auto;
-    border-radius: 12px;
-    transition: all 0.3s cubic-bezier(0.165, 0.84, 0.44, 1);
+.screenshot-img {
+    width: 200px;
+    height: 400px;
+    object-fit: cover;
+    border-radius: 15px;
+    margin: 0 10px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease;
     cursor: pointer;
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
-    opacity: 0.8;
+    border: 2px solid transparent;
 }
 
-.screenshots img:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 15px 30px rgba(229, 57, 53, 0.3);
-    opacity: 1;
+.screenshot-img:hover {
+    transform: translateY(-10px) scale(1.02);
+    box-shadow: 0 15px 35px rgba(229, 57, 53, 0.3);
+    border-color: var(--primary-color);
 }
 
 /* Modal for screenshots */
 .modal {
     display: none;
     position: fixed;
-    top: 0;
+    z-index: 9999;
     left: 0;
+    top: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.8);
-    z-index: 2000;
-    justify-content: center;
-    align-items: center;
+    background-color: rgba(0, 0, 0, 0.9);
     opacity: 0;
     transition: opacity 0.3s ease;
 }
 
 .modal.active {
     display: flex;
+    justify-content: center;
+    align-items: center;
     opacity: 1;
 }
 
 .modal-content {
     max-width: 90%;
     max-height: 90%;
+    object-fit: contain;
     border-radius: 8px;
-    box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
     transform: scale(0.9);
-    transition: transform 0.3s ease;
+    opacity: 0;
+    transition: transform 0.4s ease, opacity 0.4s ease;
 }
 
 .modal.active .modal-content {
     transform: scale(1);
+    opacity: 1;
 }
 
 .close-modal {
     position: absolute;
     top: 20px;
-    right: 20px;
+    right: 30px;
     color: white;
-    font-size: 30px;
+    font-size: 2.5rem;
     cursor: pointer;
-    opacity: 0.8;
-    transition: opacity 0.3s ease;
+    transition: color 0.3s ease;
+    z-index: 10;
 }
 
 .close-modal:hover {
-    opacity: 1;
+    color: var(--primary-color);
 }
 
-.slider-arrow {
+.modal-arrow {
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    background-color: rgba(0, 0, 0, 0.6);
     color: white;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    font-size: 2rem;
     cursor: pointer;
-    z-index: 10;
-    border: none;
+    background-color: rgba(0, 0, 0, 0.5);
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     transition: all 0.3s ease;
+    z-index: 10;
 }
 
-.slider-arrow:hover {
+.modal-arrow:hover {
     background-color: var(--primary-color);
+    box-shadow: 0 0 15px rgba(229, 57, 53, 0.6);
 }
 
-.slider-arrow.prev {
-    left: 10px;
+.modal-prev {
+    left: 30px;
 }
 
-.slider-arrow.next {
-    right: 10px;
+.modal-next {
+    right: 30px;
 }
 
-/* Mobile responsive adjustments for screenshots */
+.fade-out {
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
 @media (max-width: 768px) {
-    .screenshots img {
-        width: 180px;
+    .modal-arrow {
+        width: 40px;
+        height: 40px;
+        font-size: 1.5rem;
+    }
+    
+    .modal-prev {
+        left: 15px;
+    }
+    
+    .modal-next {
+        right: 15px;
     }
 }
 
@@ -1120,12 +1158,14 @@ footer {
     box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
     border: 1px solid rgba(229, 57, 53, 0.1);
     transition: all 0.3s ease;
+    cursor: pointer;
 }
 
 .showcase-item:hover {
     transform: translateY(-10px);
     box-shadow: 0 20px 40px rgba(229, 57, 53, 0.2);
     border-color: rgba(229, 57, 53, 0.2);
+    background-color: rgba(229, 57, 53, 0.05);
 }
 
 .showcase-icon {
@@ -1169,6 +1209,7 @@ footer {
     z-index: 2;
     animation: float 6s ease-in-out infinite;
     filter: drop-shadow(0 20px 30px rgba(229, 57, 53, 0.4));
+    border-radius: 30px;
 }
 
 @keyframes float {
@@ -1273,6 +1314,15 @@ footer {
     color: var(--text-color);
     opacity: 0.9;
     font-weight: 500;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+}
+
+.stat-label i {
+    color: var(--primary-color);
+    font-size: 0.9rem;
 }
 
 /* World Map */
@@ -1301,9 +1351,22 @@ footer {
     position: relative;
     width: 100%;
     height: 400px;
-    background: url('https://cdn.jsdelivr.net/npm/world-map-image@1.0.0/images/world-map.png') no-repeat center center;
+    background: url('https://cdn.jsdelivr.net/npm/world-map-svg@1.0.0/worldmap.svg') no-repeat center center;
     background-size: contain;
     margin: 0 auto;
+    filter: brightness(0.7) invert(0.1);
+}
+
+.world-map::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(229, 57, 53, 0.05);
+    pointer-events: none;
+    mix-blend-mode: overlay;
 }
 
 .map-point {
@@ -1526,5 +1589,42 @@ footer {
     
     .cta-graphic {
         min-height: 200px;
+    }
+}
+
+.slider-arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: rgba(0, 0, 0, 0.6);
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    z-index: 10;
+    border: none;
+    transition: all 0.3s ease;
+}
+
+.slider-arrow:hover {
+    background-color: var(--primary-color);
+}
+
+.slider-arrow.prev {
+    left: 10px;
+}
+
+.slider-arrow.next {
+    right: 10px;
+}
+
+/* Mobile responsive adjustments for screenshots */
+@media (max-width: 768px) {
+    .screenshots img {
+        width: 180px;
     }
 }

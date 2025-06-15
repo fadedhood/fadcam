@@ -109,57 +109,136 @@ document.addEventListener('DOMContentLoaded', () => {
     const screenshotModal = document.getElementById('screenshotModal');
     const modalImage = document.getElementById('modalImage');
     const closeModal = document.querySelector('.close-modal');
-    const screenshotImages = document.querySelectorAll('.screenshots img');
+    const screenshotImages = document.querySelectorAll('.screenshot-img');
     const scrollToTopBtn = document.getElementById('scroll-to-top');
 
     // =====================
-    // Scroll to Top Button
+    // Statistics Counter
     // =====================
-    window.addEventListener('scroll', () => {
-        if (window.pageYOffset > 300) {
-            scrollToTopBtn.classList.add('visible');
-        } else {
-            scrollToTopBtn.classList.remove('visible');
-        }
-    });
-
-    scrollToTopBtn.addEventListener('click', () => {
-        window.scrollTo({
-            top: 0,
-            behavior: 'smooth'
+    const statNumbers = document.querySelectorAll('.stat-number');
+    let countersStarted = false;
+    
+    // Start counters immediately
+    startCounters();
+    
+    function startCounters() {
+        if (countersStarted) return;
+        
+        countersStarted = true;
+        statNumbers.forEach(stat => {
+            const target = parseInt(stat.getAttribute('data-count'));
+            const duration = 2000; // 2 seconds animation
+            const frameRate = 1000 / 60; // 60fps
+            const totalFrames = Math.floor(duration / frameRate);
+            let frame = 0;
+            
+            const startValue = 0;
+            const countInterval = setInterval(() => {
+                frame++;
+                const progress = Math.min(frame / totalFrames, 1);
+                const currentValue = startValue + (target - startValue) * easeOutQuad(progress);
+                
+                // Format large numbers with commas
+                const formattedNumber = Math.max(0, Math.floor(currentValue)).toLocaleString();
+                stat.textContent = formattedNumber;
+                
+                if (frame >= totalFrames) {
+                    clearInterval(countInterval);
+                    stat.textContent = target.toLocaleString();
+                }
+            }, frameRate);
         });
-    });
+    }
+    
+    // Easing function for smoother animation
+    function easeOutQuad(x) {
+        return 1 - (1 - x) * (1 - x);
+    }
 
     // =====================
     // Screenshot Modal
     // =====================
-    screenshotImages.forEach(img => {
-        img.addEventListener('click', () => {
-            modalImage.src = img.src;
-            screenshotModal.classList.add('active');
-            document.body.style.overflow = 'hidden'; // Prevent scrolling when modal is open
-        });
+    let currentImageIndex = 0;
+    const allImages = Array.from(screenshotImages);
+    
+    // Create modal navigation arrows
+    const modalPrev = document.createElement('div');
+    modalPrev.className = 'modal-arrow modal-prev';
+    modalPrev.innerHTML = '<i class="fas fa-chevron-left"></i>';
+    
+    const modalNext = document.createElement('div');
+    modalNext.className = 'modal-arrow modal-next';
+    modalNext.innerHTML = '<i class="fas fa-chevron-right"></i>';
+    
+    // Add arrows to modal
+    screenshotModal.appendChild(modalPrev);
+    screenshotModal.appendChild(modalNext);
+    
+    // Add click events for all screenshot images
+    screenshotImages.forEach((img, index) => {
+        img.onclick = function() {
+            modalImage.src = this.src;
+            currentImageIndex = index;
+            screenshotModal.style.display = "flex";
+            document.body.style.overflow = "hidden";
+            
+            // Trigger animation after a small delay
+            setTimeout(() => {
+                screenshotModal.classList.add('active');
+            }, 10);
+        };
     });
-
-    // Close modal with close button
-    closeModal.addEventListener('click', () => {
+    
+    // Close modal on X click
+    closeModal.onclick = function() {
         screenshotModal.classList.remove('active');
-        document.body.style.overflow = 'auto'; // Re-enable scrolling
-    });
-
-    // Close modal when clicking outside of the image
-    screenshotModal.addEventListener('click', (e) => {
+        setTimeout(() => {
+            screenshotModal.style.display = "none";
+            document.body.style.overflow = "auto";
+        }, 300);
+    };
+    
+    // Close modal on outside click
+    screenshotModal.onclick = function(e) {
         if (e.target === screenshotModal) {
-            screenshotModal.classList.remove('active');
-            document.body.style.overflow = 'auto'; // Re-enable scrolling
+            closeModal.onclick();
         }
-    });
-
-    // Close modal with escape key
-    document.addEventListener('keydown', (e) => {
-        if (e.key === 'Escape' && screenshotModal.classList.contains('active')) {
-            screenshotModal.classList.remove('active');
-            document.body.style.overflow = 'auto'; // Re-enable scrolling
+    };
+    
+    // Navigate to previous image
+    modalPrev.onclick = function(e) {
+        e.stopPropagation();
+        currentImageIndex = (currentImageIndex - 1 + allImages.length) % allImages.length;
+        modalImage.classList.add('fade-out');
+        
+        setTimeout(() => {
+            modalImage.src = allImages[currentImageIndex].src;
+            modalImage.classList.remove('fade-out');
+        }, 300);
+    };
+    
+    // Navigate to next image
+    modalNext.onclick = function(e) {
+        e.stopPropagation();
+        currentImageIndex = (currentImageIndex + 1) % allImages.length;
+        modalImage.classList.add('fade-out');
+        
+        setTimeout(() => {
+            modalImage.src = allImages[currentImageIndex].src;
+            modalImage.classList.remove('fade-out');
+        }, 300);
+    };
+    
+    // Keyboard navigation
+    document.addEventListener('keydown', function(e) {
+        if (screenshotModal.classList.contains('active')) {
+            if (e.key === 'Escape') {
+                closeModal.onclick();
+            } else if (e.key === 'ArrowLeft') {
+                modalPrev.onclick(e);
+            } else if (e.key === 'ArrowRight') {
+                modalNext.onclick(e);
+            }
         }
     });
 
@@ -283,62 +362,6 @@ document.addEventListener('DOMContentLoaded', () => {
         (slider.scrollWidth > slider.clientWidth) ? 'flex' : 'none';
 
     // =====================
-    // Statistics Counter
-    // =====================
-    const statNumbers = document.querySelectorAll('.stat-number');
-    let countersStarted = false;
-    
-    function startCounters() {
-        if (countersStarted) return;
-        
-        countersStarted = true;
-        statNumbers.forEach(stat => {
-            const target = parseFloat(stat.getAttribute('data-count'));
-            const isDecimal = target % 1 !== 0;
-            const duration = 2000; // 2 seconds animation
-            const frameRate = 1000 / 60; // 60fps
-            const totalFrames = Math.floor(duration / frameRate);
-            let frame = 0;
-            
-            const startValue = 0;
-            const countInterval = setInterval(() => {
-                frame++;
-                const progress = Math.min(frame / totalFrames, 1);
-                const currentValue = startValue + (target - startValue) * easeOutQuad(progress);
-                
-                if (isDecimal) {
-                    stat.textContent = Math.max(0, currentValue).toFixed(1);
-                } else {
-                    stat.textContent = Math.max(0, Math.floor(currentValue));
-                }
-                
-                if (frame >= totalFrames) {
-                    clearInterval(countInterval);
-                    stat.textContent = isDecimal ? target.toFixed(1) : target;
-                }
-            }, frameRate);
-        });
-    }
-    
-    // Easing function for smoother animation
-    function easeOutQuad(x) {
-        return 1 - (1 - x) * (1 - x);
-    }
-    
-    // Start counters when stats section comes into view
-    const statsContainer = document.querySelector('.stats-container');
-    if (statsContainer) {
-        window.addEventListener('scroll', () => {
-            const statsPosition = statsContainer.getBoundingClientRect().top;
-            const screenPosition = window.innerHeight;
-            
-            if (statsPosition < screenPosition - 100) {
-                startCounters();
-            }
-        });
-    }
-
-    // =====================
     // FAQ Accordion
     // =====================
     faqItems.forEach(item => {
@@ -357,6 +380,24 @@ document.addEventListener('DOMContentLoaded', () => {
 
             // Toggle the clicked FAQ item
             item.classList.toggle('active');
+        });
+    });
+
+    // =====================
+    // Scroll to Top Button
+    // =====================
+    window.addEventListener('scroll', () => {
+        if (window.pageYOffset > 300) {
+            scrollToTopBtn.classList.add('visible');
+        } else {
+            scrollToTopBtn.classList.remove('visible');
+        }
+    });
+
+    scrollToTopBtn.addEventListener('click', () => {
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
         });
     });
 });
