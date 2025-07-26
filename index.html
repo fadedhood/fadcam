@@ -1,6 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
+        <script>
+            // Only redirect if user is visiting the old GitHub Pages URL
+            if (window.location.hostname === 'fadedhood.github.io') {
+                window.location.replace('https://fadcam.faded.dev' + window.location.pathname + window.location.search + window.location.hash);
+            }
+        </script>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>FadCam - Background Video Recorder</title>
@@ -9,7 +15,7 @@
         <meta property="og:title" content="FadCam - Background Video Recorder">
         <meta property="og:description" content="Seamless background video recorder for Android – ad-free and open-source, with customizable options.">
         <meta property="og:image" content="https://raw.githubusercontent.com/fadedhood/fadcam/main/img/banner.jpg">
-        <meta property="og:url" content="https://fadedhood.github.io/fadcam">
+        <meta property="og:url" content="https://fadcam.faded.dev">
         <meta property="og:type" content="website">
         <!-- Twitter Card data -->
         <meta name="twitter:card" content="summary_large_image">
@@ -26,7 +32,7 @@
         <header>
             <nav class="container">
                 <div class="topbar">
-                    <a href="https://fadedhood.github.io/fadcam" class="logo"><img src="img/icon3.png" alt="FadCam Logo" class="logo"></a>
+                    <a href="https://fadcam.faded.dev" class="logo"><img src="img/icon3.png" alt="FadCam Logo" class="logo"></a>
                     <div class="nav-links desktop-nav">
                         <a href="#features">Features</a>
                         <a href="#screenshots">Screenshots</a>
