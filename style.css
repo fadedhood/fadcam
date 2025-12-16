@@ -1718,6 +1718,23 @@ footer {
     .screenshots img {
         width: 180px;
     }
+    
+    .cta-container {
+        grid-template-columns: 1fr !important;
+        min-height: auto !important;
+    }
+    
+    .cta-content {
+        padding: 40px 25px !important;
+    }
+    
+    .cta-content h2 {
+        font-size: 1.8em !important;
+    }
+    
+    .cta-content p {
+        font-size: 0.95em !important;
+    }
 }
 
 .world-map {
