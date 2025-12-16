@@ -48,6 +48,7 @@
                         <a href="#reviews">Reviews</a>
                         <a href="#faq">FAQ</a>
                         <a href="#comments">Comments</a>
+                        <a href="https://www.patreon.com/c/fadedx/shop" style="background: linear-gradient(45deg, #FFD700, #FFA500); color: #000; padding: 8px 16px; border-radius: 20px; text-decoration: none; font-weight: bold; margin-left: 20px; box-shadow: 0 0 10px rgba(255, 215, 0, 0.5);">Get Pro</a>
                     </div>
                     <div class="hamburger-menu">
                         <span></span>
@@ -74,7 +75,7 @@
             <div id="particles-js" class="hero-background"></div>
             <div class="hero-content" data-aos="zoom-in" data-aos-duration="1000">
                 <h1 data-aos="fade-up" data-aos-delay="200">FadCam</h1>
-                <p data-aos="fade-up" data-aos-delay="400">Seamless background video recorder for Android – ad-free and open-source, with customizable options.</p>
+                <p data-aos="fade-up" data-aos-delay="400">Open-source, ad-free Android multimedia recorder with background video recording, screen recording, live streaming, and remote camera control </p>
                 <div class="cta-buttons" data-aos="fade-up" data-aos-delay="600">
                     <a href="https://github.com/anonfaded/FadCam/releases" class="button">Download on GitHub</a>
                     <a href="https://f-droid.org/packages/com.fadcam" class="button">Get it on F-Droid</a>
@@ -121,6 +122,135 @@
                         <li><i class="fas fa-icons"></i> 15+ customizable app icons</li>
                         <li><i class="fas fa-ban"></i> 100% ad-free, open-source, and privacy-focused</li>
                     </ul>
+                </div>
+            </div>
+        </section>
+
+        <section id="fadcam-pro" class="container" style="background: linear-gradient(135deg, #0a0a0a 0%, #141414 50%, #0a0a0a 100%); color: #FFD700; padding: 100px 30px; margin: 80px auto; border-radius: 30px; max-width: 1200px; position: relative; overflow: hidden; box-shadow: 0 20px 60px rgba(0, 0, 0, 0.8), inset 0 1px 0 rgba(255, 215, 0, 0.1);">
+            <div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: radial-gradient(circle at 20% 30%, rgba(255, 215, 0, 0.08) 0%, transparent 50%), radial-gradient(circle at 80% 70%, rgba(255, 165, 0, 0.05) 0%, transparent 50%); pointer-events: none;"></div>
+            <style>
+                @keyframes shimmer {
+                    0% { background-position: -200% 0; }
+                    100% { background-position: 200% 0; }
+                }
+                .shimmer-btn {
+                    background: linear-gradient(90deg, #FFD700 0%, #FFA500 50%, #FFD700 100%);
+                    background-size: 200% 100%;
+                    animation: shimmer 2s infinite;
+                    color: #000;
+                    padding: 18px 36px;
+                    border-radius: 50px;
+                    text-decoration: none;
+                    font-size: 1.2em;
+                    font-weight: bold;
+                    display: inline-block;
+                    box-shadow: 0 8px 25px rgba(255, 215, 0, 0.4);
+                    transition: transform 0.3s ease;
+                }
+                .shimmer-btn:hover { transform: translateY(-2px); }
+                .pro-grid {
+                    display: grid;
+                    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+                    gap: 20px;
+                    margin: 40px 0;
+                }
+                .pro-card {
+                    background: linear-gradient(145deg, #222, #333);
+                    border-radius: 20px;
+                    padding: 25px;
+                    border: 1px solid #FFD700;
+                    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+                    transition: transform 0.3s ease, box-shadow 0.3s ease;
+                }
+                .pro-card:hover {
+                    transform: translateY(-5px);
+                    box-shadow: 0 15px 40px rgba(255, 215, 0, 0.2);
+                }
+                .comparison-grid {
+                    display: grid;
+                    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+                    gap: 30px;
+                    margin: 50px 0;
+                }
+                .comparison-card {
+                    background: linear-gradient(145deg, #1e1e1e, #2a2a2a);
+                    border-radius: 25px;
+                    padding: 30px;
+                    border: 2px solid #FFD700;
+                    box-shadow: 0 12px 35px rgba(0, 0, 0, 0.6);
+                    position: relative;
+                }
+                .comparison-card.pro { border-color: #FFD700; }
+                .badge {
+                    position: absolute;
+                    top: -15px;
+                    left: 50%;
+                    transform: translateX(-50%);
+                    background: linear-gradient(45deg, #FFD700, #FFA500);
+                    color: #000;
+                    padding: 8px 16px;
+                    border-radius: 20px;
+                    font-size: 0.85em;
+                    font-weight: bold;
+                    box-shadow: 0 4px 15px rgba(255, 215, 0, 0.3);
+                }
+                @media (max-width: 768px) {
+                    .pro-grid { grid-template-columns: repeat(2, 1fr); }
+                    .comparison-grid { grid-template-columns: 1fr; }
+                    .pro-card { padding: 20px; }
+                    .comparison-card { padding: 25px; }
+                }
+            </style>
+            <div data-aos="fade-up" style="position: relative; z-index: 1;">
+                <div style="text-align: center; margin-bottom: 60px;">
+                    <h2 style="color: #FFD700; font-size: 3.5em; margin: 0 0 20px 0; text-shadow: 0 0 20px rgba(255, 215, 0, 0.5); font-weight: 700;">FadCam Pro</h2>
+                    <div style="width: 80px; height: 4px; background: linear-gradient(90deg, transparent, #FFD700, transparent); margin: 20px auto 30px;"></div>
+                    <p style="font-size: 1.15em; color: #ccc; max-width: 650px; margin: 0 auto; line-height: 1.7; font-weight: 300;">Lifetime access to discreet FadCam variants with custom app and notification icons. Notes, Calculator, and Weather builds - all functionally identical and always updated.</p>
+                </div>
+                
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 30px; margin-bottom: 50px;">
+                    <div style="background: linear-gradient(145deg, rgba(30, 30, 30, 0.8), rgba(40, 40, 40, 0.8)); backdrop-filter: blur(10px); border-radius: 20px; padding: 35px; border: 1px solid rgba(255, 215, 0, 0.2); text-align: center; transition: all 0.3s ease;">
+                        <i class="fas fa-gift" style="font-size: 2.8em; color: #FFD700; margin-bottom: 25px; display: block;"></i>
+                        <h3 style="color: #FFD700; font-size: 1.7em; margin: 0 0 20px 0; font-weight: 600;">What You Get</h3>
+                        <ul style="list-style: none; padding: 0; color: #bbb; text-align: left; font-size: 0.95em;">
+                            <li style="margin-bottom: 14px;"><i class="fas fa-check" style="color: #FFD700; margin-right: 12px; font-weight: bold;"></i>Lifetime access</li>
+                            <li style="margin-bottom: 14px;"><i class="fas fa-check" style="color: #FFD700; margin-right: 12px; font-weight: bold;"></i>All future updates</li>
+                            <li style="margin-bottom: 14px;"><i class="fas fa-check" style="color: #FFD700; margin-right: 12px; font-weight: bold;"></i>Early access releases</li>
+                            <li style="margin-bottom: 14px;"><i class="fas fa-check" style="color: #FFD700; margin-right: 12px; font-weight: bold;"></i>Priority support</li>
+                            <li><i class="fas fa-check" style="color: #FFD700; margin-right: 12px; font-weight: bold;"></i>Upcoming Pro+ & Lab tier discounts</li>
+                        </ul>
+                    </div>
+                    
+                    <div style="background: linear-gradient(145deg, rgba(40, 35, 20, 0.8), rgba(50, 45, 25, 0.8)); backdrop-filter: blur(10px); border-radius: 20px; padding: 35px; border: 1.5px solid #FFD700; text-align: center; transition: all 0.3s ease;">
+                        <i class="fas fa-crown" style="font-size: 2.8em; color: #FFD700; margin-bottom: 25px; display: block;"></i>
+                        <h3 style="color: #FFD700; font-size: 1.7em; margin: 0 0 10px 0; font-weight: 600;">FadCam Pro</h3>
+                        <p style="color: #FFD700; font-size: 0.9em; margin: 0 0 25px 0; opacity: 0.8;">Available in 3 variants</p>
+                        <div style="display: flex; justify-content: space-around; gap: 15px; margin-bottom: 25px;">
+                            <div style="flex: 1;">
+                                <i class="fas fa-sticky-note" style="font-size: 2.2em; color: #FFD700; margin-bottom: 10px; display: block;"></i>
+                                <p style="color: #bbb; font-size: 0.85em; margin: 0;">Notes</p>
+                            </div>
+                            <div style="flex: 1;">
+                                <i class="fas fa-calculator" style="font-size: 2.2em; color: #FFD700; margin-bottom: 10px; display: block;"></i>
+                                <p style="color: #bbb; font-size: 0.85em; margin: 0;">Calculator</p>
+                            </div>
+                            <div style="flex: 1;">
+                                <i class="fas fa-cloud-sun" style="font-size: 2.2em; color: #FFD700; margin-bottom: 10px; display: block;"></i>
+                                <p style="color: #bbb; font-size: 0.85em; margin: 0;">Weather</p>
+                            </div>
+                        </div>
+                        <p style="color: #bbb; font-size: 0.95em; line-height: 1.6; margin: 0;">Same power, different disguise.</p>
+                    </div>
+                    
+                    <div style="background: linear-gradient(145deg, rgba(30, 30, 30, 0.8), rgba(40, 40, 40, 0.8)); backdrop-filter: blur(10px); border-radius: 20px; padding: 35px; border: 1px solid rgba(255, 215, 0, 0.2); text-align: center; transition: all 0.3s ease;">
+                        <i class="fas fa-eye-slash" style="font-size: 2.8em; color: #FFD700; margin-bottom: 25px; display: block;"></i>
+                        <h3 style="color: #FFD700; font-size: 1.7em; margin: 0 0 20px 0; font-weight: 600;">Why FadCam Pro?</h3>
+                        <p style="color: #bbb; font-size: 0.95em; line-height: 1.7; margin: 0;">Good software takes resources. FadCam Pro supports ongoing development while offering a discreet experience. Unlike free (which shows default app name and icon in notifications), Pro comes with alternative names and icons - consistently everywhere: app launcher, notifications, lock screen.</p>
+                    </div>
+                </div>
+                
+                <div style="text-align: center; margin-top: 30px; width: 100%;">
+                    <a href="https://www.patreon.com/c/fadedx/shop" class="shimmer-btn">Get FadCam Pro</a>
                 </div>
             </div>
         </section>
@@ -688,6 +818,7 @@
                     <div class="cta-actions">
                         <a href="https://github.com/anonfaded/FadCam/releases" class="button primary">Download on GitHub</a>
                         <a href="https://f-droid.org/packages/com.fadcam" class="button secondary">Get it on F-Droid</a>
+                        <a href="https://www.patreon.com/c/fadedx/shop" class="button primary" style="background: linear-gradient(90deg, #FFD700, #FFA500, #FFD700); background-size: 200% 100%; animation: shimmer 2s infinite; color: #000; font-weight: 600;">Get FadCam Pro</a>
                     </div>
                 </div>
             </div>
