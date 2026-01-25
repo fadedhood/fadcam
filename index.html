@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Redirecting to FadCam...</title>
+    <script>
+        // Redirect all traffic to new domain
+        if (window.location.hostname !== 'fadcam.fadseclab.com') {
+            window.location.replace('https://fadcam.fadseclab.com' + window.location.pathname + window.location.search + window.location.hash);
+        }
+    </script>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            background: #000;
+            color: #fff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+        }
+        .container {
+            text-align: center;
+        }
+        h1 {
+            font-size: 2em;
+            margin-bottom: 10px;
+        }
+        p {
+            font-size: 1.1em;
+            color: #aaa;
+        }
+        a {
+            color: #FFD700;
+            text-decoration: none;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Redirecting...</h1>
+        <p>You are being redirected to fadcam.fadseclab.com</p>
+        <p>If not automatically redirected, <a href="https://fadcam.fadseclab.com">click here</a></p>
+    </div>
+</body>
+</html>
